@@ -10,12 +10,49 @@ import RealityKit
 import RealityKitContent
 
 struct ContentView: View {
+    @State private var imageName = ""
+    @State private var message = ""
+    
     var body: some View {
         VStack {
-            Model3D(named: "Scene", bundle: realityKitContentBundle)
-                .padding(.bottom, 50)
+            
+            Text("What's So Funny 'Bout")
+                .font(.largeTitle)
+                .fontWeight(.black)
+                .foregroundStyle(.purple)
+            
+            Spacer()
+            
+            Image(systemName: imageName)
+                .resizable()
+                .scaledToFit()
+                .frame(width: 300, height: 300)
+            
+            Text(message)
+                .font(.largeTitle)
+                .fontWeight(.black)
+                .foregroundStyle(.purple)
+            
+            Spacer()
+            
+            HStack {
+                Button("Peace") {
+                    imageName = "peacesign"
+                    message = "Peace"
+                }
+                Button("Love") {
+                    imageName = "heart"
+                    message = "Love"
+                }
+                Button("Understanding") {
+                    imageName = "lightbulb.min"
+                    message = "Understanding"
+                }
 
-            Text("Hello, world!")
+            }
+            .buttonStyle(.borderedProminent)
+            .tint(.purple)
+            
         }
         .padding()
     }
